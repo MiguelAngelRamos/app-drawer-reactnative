@@ -1,18 +1,36 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
-import { useColorScheme } from 'react-native';
-
-import { AnimatedSplashOverlay } from '@/components/animated-icon';
-import AppTabs from '@/components/app-tabs';
-
-SplashScreen.preventAutoHideAsync();
-
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
+import { Drawer } from 'expo-router/drawer';
+// vector-icons
+import { Ionicons } from '@expo/vector-icons';
+// colors
+import { colors } from '@/constants/colors';
+const DrawerLayout = () => {
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <AnimatedSplashOverlay />
-      <AppTabs />
-    </ThemeProvider>
-  );
+    <Drawer
+     screenOptions={{
+      headerStyle: {backgroundColor: colors.card},
+     }}
+    >
+      <Drawer.Screen 
+        name="favorites" 
+        options={{
+          title: 'Favoritos',
+          drawerIcon: ({color, size}) => (
+            <Ionicons name="heart" size={size} />
+          ),
+        }} 
+      />
+      <Drawer.Screen 
+        name="about" 
+        options={{
+          title: 'Acerca de',
+          drawerIcon: ({color, size}) => (
+            <Ionicons name="information-circle" size={size} />
+          ),
+        }} 
+      />
+
+    </Drawer>
+  )
 }
+
+export default DrawerLayout;
