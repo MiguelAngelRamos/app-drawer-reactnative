@@ -1,3 +1,7 @@
+import { FavoritesProvider } from '@/context/FavoritesContext';
+import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
+import { Stack } from 'expo-router';
+import { StatusBar } from 'expo-status-bar';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 //* Este es el contenedor de toda la app
 //* Quienes viven aqui?
@@ -12,6 +16,14 @@ const RootLayout = () => {
   <GestureHandlerRootView
   style={{flex: 1}}
   >
+    <FavoritesProvider>
+      <StatusBar style="light" />
+      <BottomSheetModalProvider>
+        <Stack>
+          <Stack.Screen name="(drawer)" options={{headerShown: false}} />
+        </Stack>
+      </BottomSheetModalProvider>
+    </FavoritesProvider>
     
   </GestureHandlerRootView>
   )
