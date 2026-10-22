@@ -1,6 +1,6 @@
 import { Character } from '@/types';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { createContext, ReactNode, useEffect, useState } from 'react';
+import { createContext, ReactNode, useContext, useEffect, useState } from 'react';
 // clave con la que vamos a guardar los favoritos en el almacenamiento del movil
 
 const STORAGE_KEY = 'favorites';
@@ -40,8 +40,22 @@ export const FavoritesProvider = ({children}: {children: ReactNode}) => {
 
   // Corazon del detalle toogle favorito
   // Esta funcion añade al personaje a favoritos sino estaba y lo quita si ya estaba (como un interruptor)
-  const toogleFavorite = (character: Character) => {
+  const toggleFavorite = (character: Character) => {
     setFavorites((prev) => prev.some((fav) => fav.id === character.id) ? prev.filter((fav) => fav.id !== character.id) : [...prev, character]);
   }
 
+  return (
+    <FavoritesContext.Provider value ={{favorites, isFavorite, toggleFavorite }}>
+      {children}
+    </FavoritesContext.Provider>
+  )
+};
+
+// Hook para usar los favoritos en cualquier panalla
+export const useFavorites = () => {
+  const context = useContext(FavoritesContext);
+  if(!context) {
+    throw new Error('useFavorites debe usarse dentro de <FavoritesProvider>');
+  }
+  return context;
 }
