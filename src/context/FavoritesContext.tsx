@@ -4,9 +4,11 @@ import { createContext, ReactNode, useContext, useEffect, useState } from 'react
 // clave con la que vamos a guardar los favoritos en el almacenamiento del movil
 
 const STORAGE_KEY = 'favorites';
+// Los datos son los mismos que devuelve la API en /character/1
+
 
 interface IFavoritesContextType {
-  favorites: Character[];
+  favorites: Character[]; 
   isFavorite: (id: number) => boolean,
   toggleFavorite: (character: Character) => void;
 }
