@@ -1,9 +1,18 @@
 import {Tabs} from "expo-router";
 import {Ionicons} from "@expo/vector-icons";
+import {colors} from "@/constants/colors";
 
 const TabsLayout = () => {
     return(
-        <Tabs>
+        <Tabs
+            screenOptions={{
+                headerShown: false,
+                // barra de pestaños color oscuro de la paleta personalizada
+                tabBarStyle: {backgroundColor: colors.card},
+                tabBarActiveTintColor: colors.primary,
+                tabBarInactiveTintColor: colors.textMuted,
+            }}
+        >
             <Tabs.Screen
                 name='index'
                 options={{
