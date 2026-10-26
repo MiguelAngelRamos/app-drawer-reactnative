@@ -1,4 +1,4 @@
-import {ReactElement} from "react";
+import {ReactElement, useState} from "react";
 import {View} from "react-native";
 import SearchBar from "@/components/SearchBar";
 
@@ -18,10 +18,11 @@ const ResourceList = <T extends {id: number}>({
     renderItem,
     filters,
     headerRight,}:Props<T>) => {
+    const [search, setSearch] = useState('')
     return (
         <View>
             <View>
-                <SearchBar/>
+                <SearchBar value={search} onChangeText={setSearch} placeholder={placeholder} />
             </View>
         </View>
     )
