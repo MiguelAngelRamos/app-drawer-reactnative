@@ -1,4 +1,5 @@
 import {Tabs} from "expo-router";
+import {Ionicons} from "@expo/vector-icons";
 
 const TabsLayout = () => {
     return(
@@ -6,18 +7,21 @@ const TabsLayout = () => {
             <Tabs.Screen
                 name='index'
                 options={{
-                    title: 'Personajes'
+                    title: 'Personajes',
+                    tabBarIcon: ({color, size}) => <Ionicons name="people"  size={size} color={color as string}/>
                 }}
             />
             <Tabs.Screen
                 name='episodes'
                 options={{
                     title: 'Episodios',
+                    tabBarIcon: ({color, size}) => <Ionicons name="tv" size={size} color={color as string}/>
                 }}/>
             <Tabs.Screen
                 name='locations'
                 options={{
                     title: 'Lugares',
+                    tabBarIcon: ({color, size}) => <Ionicons  name="planet" size={size} color={color as string}/>
                 }}/>
         </Tabs>
     )
