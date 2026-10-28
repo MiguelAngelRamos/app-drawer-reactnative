@@ -3,7 +3,7 @@ import {Character} from "@/types";
 
 const CharacterCard = ({character}: {character: Character}) => {
     return(
-        <Text>{character.name}</Text>
+        <Text>{character.name} -</Text>
     )
 }
 
