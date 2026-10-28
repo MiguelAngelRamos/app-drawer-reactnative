@@ -6,6 +6,7 @@ import CharacterCard from "@/components/CharacterCard";
 import {getCharacters} from "@/services/api";
 import {colors} from "@/constants/colors";
 import SearchBar from "@/components/SearchBar";
+
 const CharactersScreen = () => {
     const [character, setCharacter] = useState<Character[]>([]); // los datos que vamos a recibir del api
     const [loading, setLoading] = useState(true); // Estamos esperando una respuesta?
