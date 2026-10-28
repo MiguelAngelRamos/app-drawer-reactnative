@@ -1,7 +1,7 @@
 import {Pressable, Text, Image, View, StyleSheet} from "react-native";
 import {Character} from "@/types";
 import {colors} from "@/constants/colors";
-
+import { router } from 'expo-router';
 const statusColor = (status: Character['status']) => {
     return status === 'Alive' ? colors.alive: status === 'Dead' ? colors.dead: colors.unknown;
 }
@@ -9,7 +9,7 @@ const CharacterCard = ({character}: {character: Character}) => {
     return(
         <Pressable
             style={styles.card}
-            onPress={() => { console.log("ir al detalle del personaje") }}
+            onPress={() => router.push({pathname: '/character/[id]', params: {id: character.id}})}
         >
             <Image
                 source={{ uri: character.image }}
