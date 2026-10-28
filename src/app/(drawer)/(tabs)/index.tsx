@@ -1,10 +1,11 @@
 import {useEffect, useState} from "react";
-import { ActivityIndicator, Text, FlatList} from "react-native";
+import { ActivityIndicator, Text, FlatList, View} from "react-native";
 import ResourceList from "@/components/ResourceList";
 import {Character} from "@/types";
 import CharacterCard from "@/components/CharacterCard";
 import {getCharacters} from "@/services/api";
 import {colors} from "@/constants/colors";
+import SearchBar from "@/components/SearchBar";
 const CharactersScreen = () => {
     const [character, setCharacter] = useState<Character[]>([]); // los datos que vamos a recibir del api
     const [loading, setLoading] = useState(true); // Estamos esperando una respuesta?
@@ -42,9 +43,15 @@ const CharactersScreen = () => {
         )
     }
     return (
-        <>
-
-        </>
+        <View>
+            <SearchBar
+                value={text}
+                onChangeText={setText}
+                onSubmit={() => setSearch(text)}
+                placeholder="Buscar Personaje"
+            />
+            {renderContent()}
+        </View>
     )
 }
 
