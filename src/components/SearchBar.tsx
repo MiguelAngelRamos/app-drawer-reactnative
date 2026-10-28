@@ -6,15 +6,21 @@ import {colors} from "@/constants/colors";
 interface Props {
     value: string;
     onChangeText: (text: string) => void;
+    onSubmit: () => void; // se llama al pulsar "Buscar/Enter" en el teclado
     placeholder: string;
 }
-const SearchBar = ({value, onChangeText, placeholder}:Props) => {
+const SearchBar = ({value, onChangeText, onSubmit, placeholder}:Props) => {
     return (
         <View style={styles.container}>
             <Ionicons name="search" size={18} color={colors.textMuted} />
             <TextInput
                 style={styles.input}
                 value={value}
+                onChangeText={onChangeText}
+                // onSubmitEditing se dispara al pulsar la tecla enter
+                onSubmitEditing={onSubmit}
+                // returnKeyType cambia la tecla enter del teclado por una que dice "Buscar"
+                returnKeyType="search"
                 placeholder={placeholder}
                 placeholderTextColor={colors.textMuted}
                 autoCorrect={false}
