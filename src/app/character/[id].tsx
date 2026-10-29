@@ -1,10 +1,9 @@
-import {Text, StyleSheet, Pressable, ActivityIndicator} from "react-native";
+import {Text, StyleSheet, Pressable, ActivityIndicator, ScrollView} from "react-native";
 import {colors} from "@/constants/colors";
 import {Stack, useLocalSearchParams} from "expo-router";
 import {useEffect, useState} from "react";
 import {Character} from "@/types";
 import {getCharacter} from "@/services/api";
-import {ScrollView} from "@expo/ui";
 import {Ionicons} from "@expo/vector-icons";
 import {useFavorites} from "@/context/FavoritesContext";
 

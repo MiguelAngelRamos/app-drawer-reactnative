@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import { ActivityIndicator, Text, FlatList, View} from "react-native";
+import { ActivityIndicator, Text, FlatList, View, StyleSheet} from "react-native";
 import ResourceList from "@/components/ResourceList";
 import {Character} from "@/types";
 import CharacterCard from "@/components/CharacterCard";
@@ -44,7 +44,7 @@ const CharactersScreen = () => {
         )
     }
     return (
-        <View>
+        <View style = {styles.container}>
             <SearchBar
                 value={text}
                 onChangeText={setText}
@@ -57,3 +57,7 @@ const CharactersScreen = () => {
 }
 
 export default CharactersScreen;
+
+const styles = StyleSheet.create({
+    container: { flex: 1, backgroundColor: colors.background}
+})
