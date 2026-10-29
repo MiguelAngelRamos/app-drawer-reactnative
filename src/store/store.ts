@@ -27,7 +27,7 @@ export const store = configureStore({
         },
     }),
 })
-
+// controla la carga y el guardado del estado persistido
 export const persistor = persistStore(store);
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
