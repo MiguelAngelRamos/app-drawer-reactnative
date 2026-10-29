@@ -1,12 +1,12 @@
-import { useFavorites } from '@/context/FavoritesContext';
+
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 const AboutScreen = () => {
-  const { favorites, isFavorite, toggleFavorite } = useFavorites();
+
   return (
     <View style={styles.container}>
       <Text>Acerca de</Text>
      <FlatList
-      data={favorites}
+      data={[]}
       renderItem={({item}) => (
         <Text>{item.name}</Text>
       )}
